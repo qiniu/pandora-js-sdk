@@ -2,15 +2,16 @@
  * qiniu-js-sdk v@VERSION
  *
  * Copyright 2017 by Qiniu
- * Released under GPL V2 License.
+ * Released under MIT License.
  *
  * GitHub: http://github.com/qiniu/js-sdk
  *
  * Date: @DATE
  */
+
 (function (global) {
 
-    function PandoraJsSDK() {
+    function QiniuPandoraJsSDK() {
 
         /**
          * parse json string to javascript object
@@ -70,6 +71,13 @@
         };
 
         this.pushToPandoraPipeline = function(repoName, pandoraAuth, data) {
+
+            if (typeof data !== "object") {
+                throw new Error("typeof data must be object, instead of " + (typeof data));
+            }
+            if (!(data instanceof Array)) {
+                data = [data];
+            }
             var protocolAndDomain;
             if (window.location.protocol === 'https:') {
                 protocolAndDomain = "https://pipeline.qiniu.com";
@@ -111,14 +119,14 @@
                         } else {
                             errorMessage = "unknown reason";
                         }
-                        console.debug("[STATISTICS] push data to pandora pipeline failed: " + errorMessage);
+                        console.debug("[STATISTICS] push data to pandora pipeline failed with status " + ajax.status + " : " + errorMessage);
                     }
                 }
             };
             ajax.send(textData);
         };
     }
-    global.Pandora = new PandoraJsSDK();
-    global.PandoraJsSDK = PandoraJsSDK;
+    global.QiniuPandora = new QiniuPandoraJsSDK();
+    global.QiniuPandoraJsSDK = QiniuPandoraJsSDK;
 
 })(window);
