@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pandora-js-sdk-demo</title>
+    <script type="text/javascript" src="../src/pandora.js"></script>
+    <script type="text/javascript">
+        console.log("start push data");
+        setTimeout(function() {
+            const repo = "pandora_js_demo";
+            const token = "le0xKwjp2_9ZGZMkCok7Gko6aG5GnIHValG82deI:HFpK_YnuiPbPKm3yHd7BztZw5oY=:eyJyZXNvdXJjZSI6Ii92Mi9yZXBvcy9wYW5kb3JhX2pzX2RlbW8vZGF0YSIsImV4cGlyZXMiOjEwMDE1MDU3MjAzNDgsImNvbnRlbnRNRDUiOiIiLCJjb250ZW50VHlwZSI6InRleHQvcGxhaW4iLCJoZWFkZXJzIjoiIiwibWV0aG9kIjoiUE9TVCJ9";
+            const data = [{"aaa": "aaa", "bbb": "bb"}];
+            QiniuPandora.pushToPandoraPipeline(repo, token, data);
+        }, 5000);
+    </script>
+</head>
+
+<body>
+
+</body>
+</html>

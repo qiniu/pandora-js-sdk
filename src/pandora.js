@@ -75,6 +75,9 @@
             if (typeof data !== "object") {
                 throw new Error("typeof data must be object, instead of " + (typeof data));
             }
+            if (data === null) {
+                throw new Error("data cannot be null");
+            }
             if (!(data instanceof Array)) {
                 data = [data];
             }
